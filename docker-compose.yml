@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: shortcut-master-api
+    build:
+      context: ./
+      dockerfile: ./shortcut-master-api/Dockerfile
+    volumes:
+      - ./shortcut-master-api:/app:cached
+    tty: true
+    ports:
+      - 3000:3000
+    command: sh -c "yarn run start:dev"
+  web:
+    container_name: shortcut-master-web
+    build:
+      context: ./
+      dockerfile: ./shortcut-master-web/Dockerfile
+    volumes:
+      - ./shortcut-master-web:/app:cached
+    tty: true
+    ports:
+      - 8000:8000
+    command: sh -c "yarn run dev"
