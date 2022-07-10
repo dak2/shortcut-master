@@ -5,7 +5,7 @@ services:
     container_name: shortcut-master-api
     build:
       context: ./
-      dockerfile: ./shortcut-master-api/Dockerfile
+      dockerfile: ./Dockerfile.shortcut-master-api
     volumes:
       - ./shortcut-master-api:/app:cached
     tty: true
@@ -16,7 +16,7 @@ services:
     container_name: shortcut-master-web
     build:
       context: ./
-      dockerfile: ./shortcut-master-web/Dockerfile
+      dockerfile: ./Dockerfile.shortcut-master-web
     volumes:
       - ./shortcut-master-web:/app:cached
     tty: true
