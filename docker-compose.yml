@@ -4,22 +4,24 @@ services:
   api:
     container_name: shortcut-master-api
     build:
-      context: ./
-      dockerfile: ./Dockerfile.shortcut-master-api
+      context: ./shortcut-master-api
+      dockerfile: ../Dockerfile.shortcut-master-api
     volumes:
       - ./shortcut-master-api:/app:cached
+      - /app/node_modules
     tty: true
     ports:
       - 3000:3000
-    command: sh -c "yarn run start:dev"
+    command: npm run start:dev
   web:
     container_name: shortcut-master-web
     build:
-      context: ./
-      dockerfile: ./Dockerfile.shortcut-master-web
+      context: ./shortcut-master-web
+      dockerfile: ../Dockerfile.shortcut-master-web
     volumes:
       - ./shortcut-master-web:/app:cached
+      - /app/node_modules
     tty: true
     ports:
       - 8000:8000
-    command: sh -c "yarn run dev"
+    command: npm run dev
