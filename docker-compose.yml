@@ -12,7 +12,23 @@ services:
     tty: true
     ports:
       - 3000:3000
+    depends_on:
+      - db
     command: npm run start:dev
+  db:
+    container_name: shortcut-master-db
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.shortcut-master-db
+    volumes:
+      - ./shortcut-master-db/volume:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: shortcut-master-db
+      MYSQL_USER: ${USERNAME}
+      MYSQL_PASSWORD: ${USERPASS}
+      MYSQL_ROOT_PASSWORD: ${ROOTPASS}
+    ports:
+      - 5000:5000
   web:
     container_name: shortcut-master-web
     build:
