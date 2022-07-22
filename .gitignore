@@ -1,2 +1,4 @@
 shortcut-master-api
 shortcut-master-web
+.env
+shortcut-master-db/volume
