@@ -28,7 +28,7 @@ services:
       MYSQL_PASSWORD: ${USERPASS}
       MYSQL_ROOT_PASSWORD: ${ROOTPASS}
     ports:
-      - 5000:5000
+      - 3306:3306
   web:
     container_name: shortcut-master-web
     build:
