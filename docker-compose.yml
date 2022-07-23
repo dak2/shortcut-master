@@ -12,6 +12,7 @@ services:
     tty: true
     ports:
       - 3000:3000
+      - 5555:5555
     depends_on:
       - db
     command: npm run start:dev
