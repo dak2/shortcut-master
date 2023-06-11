@@ -4,23 +4,22 @@ services:
   api:
     container_name: shortcut-master-api
     build:
-      context: ./shortcut-master-api
-      dockerfile: ../Dockerfile.shortcut-master-api
+      context: .
+      dockerfile: Dockerfile.shortcut-master-api
     volumes:
       - ./shortcut-master-api:/app:cached
       - /app/node_modules
     tty: true
     ports:
       - 3000:3000
-      - 5555:5555
     depends_on:
       - db
     command: npm run start:dev
   db:
     container_name: shortcut-master-db
     build:
-      context: ./
-      dockerfile: ./Dockerfile.shortcut-master-db
+      context: .
+      dockerfile: Dockerfile.shortcut-master-db
     volumes:
       - ./shortcut-master-db/volume:/var/lib/mysql
     environment:
@@ -33,8 +32,8 @@ services:
   web:
     container_name: shortcut-master-web
     build:
-      context: ./shortcut-master-web
-      dockerfile: ../Dockerfile.shortcut-master-web
+      context: .
+      dockerfile: Dockerfile.shortcut-master-web
     volumes:
       - ./shortcut-master-web:/app:cached
       - /app/node_modules
